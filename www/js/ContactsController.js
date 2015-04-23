@@ -8,4 +8,11 @@ angular.module('starter')
             console.log(items);
         });
 
+        $scope.doRefresh = function () {
+            ContactsService.GetNewContact().then(function(item){
+                $scope.contacts = $scope.contacts.concat(item);
+            }).finally(function() {
+                $scope.$broadcast('scroll.refreshComplete');
+            })
+        };
     });

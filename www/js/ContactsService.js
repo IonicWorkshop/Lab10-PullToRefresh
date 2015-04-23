@@ -14,6 +14,11 @@ angular.module('starter')
         },
         GetContact: function(index) {
             return items[index];
+        },
+        GetNewContact: function(){
+            return $http.get(BASE_URL + '?q' + (n++)).then(function(response){
+                return response.data.results[0];
+            });
         }
     }
 });
